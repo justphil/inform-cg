@@ -18,6 +18,7 @@ angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, $
     }
   }).then(dialogMarkupBuilder.buildMarkup).then(function(markupString){
       console.log(markupString);
+      $scope.dialogMarkup = markupString;
   }).catch(function(error) {
     console.log('Error', error);
   });

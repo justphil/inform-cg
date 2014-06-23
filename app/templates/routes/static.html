@@ -1,35 +1,19 @@
 <!-- example of static dialog, not using dialog description language to generate the dialog -->
 
+<cg-dialog-renderer markup="{{ dialogMarkup }}" dialog-values="dialog.dialogValues"></cg-dialog-renderer>
+
+<!--
 <h1>Test Dialog</h1>
-
-
 
 <cg-dialog id="dialog1" dialog-values="dialog.dialogValues" cg-isserveraction="true">
 
-    <!--
-      <cg-dialog-header> ... </cg-dialog-header>
-      <cg-dialog-footer> ... </cg-dialog-footer>
-    -->
+
 
     <cg-dialog-controls>
         <cg-input id="name" value="query1_name"></cg-input>
 
         <cg-table id="tourTable" ng-model="tour__overview">
-            <!--
-            <cg-actionhandlers>
-                <cg-onrowdblclick>
-                    <cg-action cg-isserveraction="true" cg-type="showdialog" cg-dialog="TourDetailsDialog.json">
-                        <cg-onsuccess>
-
-                        </cg-onsuccess>
-                        <cg-onerror>
-
-                        </cg-onerror>
-                    </cg-action>
-                </cg-onrowdblclick>
-            </cg-actionhandlers>
-            -->
         </cg-table>
     </cg-dialog-controls>
 </cg-dialog>
-
+-->
