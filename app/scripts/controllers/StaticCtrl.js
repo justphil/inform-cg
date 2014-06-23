@@ -1,4 +1,4 @@
-angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, dialogLoadingService, dialogCreationService, i18nService,dialogFragmentLoader) {
+angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, $q, dialogLoadingService, dialogCreationService, i18nService,dialogFragmentLoader) {
   console.log('### ### StaticCtrl initialized!');
 
   $scope.dialog = {
@@ -6,10 +6,17 @@ angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, d
     // dialogValues (initial copy of queryStore)
   };
 
-  dialogLoadingService.loadDialog('tourOverviewFromServer.json').then(function(response) {
-    console.log('Dialog loaded', response.data);
-    return response.data;
-  }).then(dialogFragmentLoader.loadFragments).then(dialogCreationService.createDialog).catch(function(error) {
+  var promises = [
+    dialogFragmentLoader.loadFragments(),
+    dialogLoadingService.loadDialog('tourOverviewFromServer.json')
+  ];
+
+  $q.all(promises).then(function(responses) {
+    return {
+      fragments: responses[0],
+      description: responses[1].data
+    }
+  }).then(dialogCreationService.createDialog).catch(function(error) {
     console.log('Error', error);
   });
 
