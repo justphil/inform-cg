@@ -87,7 +87,9 @@
       {
         "target": "data/timeslotman/basedata/allTours.json"
       }
-    ]
+    ],
+    "alltours.name": "Tobias",
+    "alltours.code":"1234"
   },
   "dataModel": {
     "tour__overview": {

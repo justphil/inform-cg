@@ -3,7 +3,8 @@ angular.module('informCgApp').directive('cgDialog', function($compile) {
   return {
     restrict: 'E',
     scope: {
-      dialogValues: '='
+      dialogValues: '=',
+      dataModel:'@'
     },
     terminal: true,
     priority: 1000,

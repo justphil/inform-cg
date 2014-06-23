@@ -12,8 +12,11 @@ angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, $
   ];
 
   $q.all(promises).then(function(responses) {
-    $scope.dialog.queryStore = responses[1].data.dataModel;
-    $scope.dialog.dialogValues = responses[1].data.dataModel; // TODO: this should be a real deep copy
+    //$scope.dialog.queryStore = responses[1].data.dataModel;
+
+    $scope.dialog.dataModel = responses[1].data.dataModel; // no deep copy needed, its immutable (bound to scope with "@")
+    // TODO: need to copy values from first row of dataModel using query header information as keys
+    $scope.dialog.dialogValues = responses[1].data.dialogValues;
 
     return {
       fragments: responses[0],

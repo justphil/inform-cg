@@ -5,7 +5,8 @@ angular.module('informCgApp').directive('cgDialogRenderer', function($q, $compil
     restrict: 'E',
     scope: {
       markup:        '@',
-      dialogValues:  '=' // two-way binding to dialogValues because we want to see all changes in the including controller
+      dialogValues:  '=', // two-way binding to dialogValues because we want to see all changes in the including controller
+      dataModel: '@'
     },
     link: function(scope, element, attrs) {
       console.log('cgDialogRenderer instance initialized');
