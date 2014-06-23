@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('informCgApp', ['ngRoute']);
+angular.module('informCgApp', ['ui.router']);
