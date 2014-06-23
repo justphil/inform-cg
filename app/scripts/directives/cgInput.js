@@ -5,6 +5,9 @@ angular.module('informCgApp').directive('cgInput', function() {
     templateUrl: 'templates/directives/cgInputTemplate.html',
     link: function() {
       console.log('cgInput instance created');
+    },
+    scope:{
+      value:'='
     }
   }
 
