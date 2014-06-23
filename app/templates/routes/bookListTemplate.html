@@ -1,0 +1,36 @@
+<h2>Book List</h2>
+
+<input type="text" ng-model="searchText">
+
+<table border="1">
+    <thead>
+        <tr>
+            <th ng-click="setOrderProperty('title')">Title</th>
+            <th ng-click="setOrderProperty('subtitle')">Subtitle</th>
+            <th ng-click="setOrderProperty('isbn')">ISBN</th>
+            <th ng-click="setOrderProperty('author')">Author</th>
+            <th ng-click="setOrderProperty('numPages')">Pages</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="book in books | filter:searchText | orderBy:orderProperty:reverseOrder">
+            <td><a ng-bind="book.title" ng-href="#/books/{{book.isbn}}"></a></td>
+            <td ng-bind="book.subtitle"></td>
+            <td ng-bind="book.isbn"></td>
+            <td ng-bind="book.author"></td>
+            <td ng-bind="book.numPages"></td>
+            <td><button ng-click="deleteBook(book)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<p><a href="#/newbook">Create New Book</a></p>
+
+<message-dialog visible="dialogVisible"
+                title="dialogTitle"
+                on-yes="performDeletion()"
+                on-no="cancelDeletion()">
+    Wollen Sie das Buch &quot;{{ bookToDelete.title }} - {{ bookToDelete.subtitle }}&quot; wirklich löschen?
+</message-dialog>

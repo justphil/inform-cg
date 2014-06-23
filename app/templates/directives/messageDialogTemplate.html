@@ -1,0 +1,8 @@
+<div ng-show="visible" class="overlay">
+    <div class="dialog">
+        <div class="title"><b ng-bind="title | uppercase"></b></div>
+        <div class="content" ng-transclude></div>
+        <button class="action-button" ng-click="onYes()">JA</button>
+        <button class="action-button" ng-click="onNo()">NEIN</button>
+    </div>
+</div>

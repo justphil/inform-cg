@@ -1,0 +1,35 @@
+<h2>Create New Book</h2>
+<form name="bookForm" novalidate>
+    <input type="text"
+           placeholder="Title"
+           name="title"
+           ng-model="book.title"
+           required><br>
+
+    <input type="text"
+           placeholder="Subtitle"
+           name="subtitle"
+           ng-model="book.subtitle"
+           required><br>
+
+    <input type="text"
+           placeholder="Author"
+           name="author"
+           ng-model="book.author"
+           required><br>
+
+    <input type="text"
+           placeholder="Pages"
+           name="numPages"
+           ng-model="book.numPages"
+           required><br>
+
+    <input type="text"
+           placeholder="ISBN"
+           name="isbn"
+           ng-model="book.isbn"
+           required><br>
+
+    <button ng-disabled="bookForm.$invalid"
+            ng-click="saveBook(book)">Create New Book</button>
+</form>
