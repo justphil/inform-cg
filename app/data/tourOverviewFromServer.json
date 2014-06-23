@@ -1,0 +1,205 @@
+{
+  "footer": {
+    "id": "allToursHeader",
+    "controls": [
+      {
+        "id": "showTourDetails",
+        "label": "#showTourDetails",
+        "type": "button",
+        "onclick": {
+          "action": {
+            "isServerAction": true,
+            "type": "showDialog",
+            "dialog": "TourDetailsDialog.json",
+            "onSuccess": {},
+            "onError": {}
+          }
+        },
+        "readonly": false
+      },
+      {
+        "id": "btnTourDelete",
+        "label": "#deleteTour",
+        "type": "button",
+        "onclick": {
+          "action": {
+            "isServerAction": true,
+            "type": "showDialog",
+            "dialog": "TourDeleteDialog.json",
+            "onSuccess": {},
+            "onError": {}
+          }
+        },
+        "readonly": false
+      }
+    ],
+    "readonly": false
+  }, "id": "allTours",
+  "controls": [
+    {
+      "id": "tourTable",
+      "type": "table",
+      "servervarSingleRow": "selectedtour",
+      "tableOptions": {
+        "showfilterrow": true,
+        "showExport": true,
+        "showGrouping": true
+      },
+      "queryinfo": {
+        "query": "tour__overview"
+      },
+      "onrowdblclick": {
+        "action": {
+          "isServerAction": true,
+          "type": "showDialog",
+          "dialog": "TourDetailsDialog.json",
+          "onSuccess": {},
+          "onError": {}
+        }
+      },
+      "readonly": false
+    }
+  ],
+  "isserveraction": true,
+  "type": "dialog",
+  "fullname": "timeslotman/basedata/allTours",
+  "header": {
+    "id": "allToursHeader",
+    "title": "#AllPlannedTours",
+    "readonly": false
+  },
+  "readonly": false,
+  "dialogValues": {
+    "navigationStack": [
+      {
+        "target": "data/timeslotman/basedata/allTours.json"
+      }
+    ]
+  },
+  "dataModel": {
+    "tour__overview": {
+      "queryname": "tour__overview",
+      "data": [
+        ["TOUR4", "Tour 4", null, "9646", "DS", "2014-01-01", "2017-05-31", ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"], "Deltacar spedition s.r.o."],
+        ["TOUR2", "Tour 2", null, "8925", "DS", "2013-01-01", "2017-12-31", ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"], "P.H.U.S. Export-Import \"TRANSP"],
+        ["TOUR5", "Tour 5", null, "8925", "DS", "2013-01-01", null, ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"], "P.H.U.S. Export-Import \"TRANSP"],
+        ["TOUR3", "Tour 3", null, "9638", "DS", "2010-01-01", "2015-12-31", ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"], "Deltacar spedition s.r.o."],
+        ["TOUR1", "Tour 1", null, "8925", "DS", "2013-01-01", "2016-12-31", ["MONDAY", "WEDNESDAY", "FRIDAY"], "P.H.U.S. Export-Import \"TRANSP"],
+        ["test", "test", "bem", "DEFAULT", "INFORM", "2014-01-01", "2014-12-30", ["MONDAY"], "Brill"],
+        ["tour11", "11", "bem11", "GARDOBOND", "SELBST", "2014-01-01", "2015-01-01", ["MONDAY"], "ETG GmbH Spedition Logistik"],
+        ["test13", null, null, null, null, null, null, null, null]
+      ],
+      "parameters": {
+        "mandant": "11",
+        "user": "test"
+      },
+      "actions": [
+        {
+          "command": "TOUR_EDIT",
+          "code": "EDIT"
+        },
+        {
+          "command": "TOUR_EDIT #",
+          "code": "NEW"
+        },
+        {
+          "command": "TOUR_DELETE",
+          "code": "DEL"
+        }
+      ],
+      "header": [
+        {
+          "name": "code",
+          "codeIndex": 0,
+          "type": "STRING"
+        },
+        {
+          "name": "description",
+          "type": "STRING"
+        },
+        {
+          "name": "remark",
+          "type": "STRING"
+        },
+        {
+          "refInfo": {
+            "entity": "Relation",
+            "column": "code",
+            "table": "T_RELATION"
+          },
+          "name": "relation",
+          "type": "REF"
+        },
+        {
+          "refInfo": {
+            "entity": "DeliveryType",
+            "column": "code",
+            "table": "T_DELIVERYTYPE"
+          },
+          "name": "deliveryType",
+          "type": "REF"
+        },
+        {
+          "name": "validFrom",
+          "type": "DATE"
+        },
+        {
+          "name": "validTo",
+          "type": "DATE"
+        },
+        {
+          "enumInfo": {
+            "values": [
+              {
+                "index": 1,
+                "name": "MONDAY"
+              },
+              {
+                "index": 2,
+                "name": "TUESDAY"
+              },
+              {
+                "index": 3,
+                "name": "WEDNESDAY"
+              },
+              {
+                "index": 4,
+                "name": "THURSDAY"
+              },
+              {
+                "index": 5,
+                "name": "FRIDAY"
+              },
+              {
+                "index": 6,
+                "name": "SATURDAY"
+              },
+              {
+                "index": 7,
+                "name": "SUNDAY"
+              }
+            ],
+            "name": "Weekday",
+            "type": "indexed"
+          },
+          "name": "weekDays",
+          "multi": true,
+          "type": "ENUMSET",
+          "textKey": "Enum.Weekday"
+        },
+        {
+          "refInfo": {
+            "entity": "Carrier",
+            "column": "name",
+            "table": "T_CARRIER"
+          },
+          "name": "carrier",
+          "type": "STRING"
+        }
+      ]
+    }
+  },
+  "errorMessage": null,
+  "reload": true,
+  "target": null
+}
