@@ -1,0 +1,12 @@
+{
+  "de": {
+    "test1": "Test 1 auf deutsch",
+    "test2": "Test 2 auf deutsch",
+    "test3": "Test 3 auf deutsch"
+  },
+  "en": {
+    "test1": "Test 1 in english",
+    "test2": "Test 2 in english",
+    "test3": "Test 3 in english"
+  }
+}
