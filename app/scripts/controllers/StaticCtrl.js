@@ -12,6 +12,9 @@ angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, $
   ];
 
   $q.all(promises).then(function(responses) {
+    $scope.dialog.queryStore = responses[1].data.dataModel;
+    $scope.dialog.dialogValues = responses[1].data.dataModel; // TODO: this should be a real deep copy
+
     return {
       fragments: responses[0],
       description: responses[1].data
@@ -22,18 +25,6 @@ angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, $
   }).catch(function(error) {
     console.log('Error', error);
   });
-
-
-  // TODO: obsolete
-  $http.get('data/tour_overview.json').then(function(response) {
-    console.log('response', response.data);
-    $scope.dialog.queryStore = response.data;
-    $scope.dialog.dialogValues = response.data; // TODO: this should be a real deep copy
-  }).catch(function(error) {
-    console.log('Error', error);
-  });
-
-
 
 
 });
