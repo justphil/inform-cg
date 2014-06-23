@@ -1,9 +1,15 @@
-angular.module('informCgApp').directive('cgDialog', function() {
+angular.module('informCgApp').directive('cgDialog', function($compile) {
 
   return {
     restrict: 'E',
-    link: function() {
-      console.log('cgDialog instance created!');
+    scope: {
+      dialogValues: '='
+    },
+    terminal: true,
+    priority: 1000,
+    link: function(scope, element) {
+      var innerHtml = $compile(element.html())(scope);
+      element.html(innerHtml);
     }
   }
 

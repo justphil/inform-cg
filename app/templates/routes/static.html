@@ -2,7 +2,9 @@
 
 <h1>Test Dialog</h1>
 
-<cg-dialog ng-model="tour__overview" cg-isserveraction="true">
+
+
+<cg-dialog id="dialog1" dialog-values="dialog.dialogValues" cg-isserveraction="true">
 
     <!--
       <cg-dialog-header> ... </cg-dialog-header>
@@ -10,7 +12,8 @@
     -->
 
     <cg-dialog-controls>
-        <cg-input id="name" value="query1_name" />
+        <cg-input id="name" value="query1_name"></cg-input>
+
         <cg-table id="tourTable" ng-model="tour__overview">
             <!--
             <cg-actionhandlers>
