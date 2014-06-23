@@ -41,6 +41,7 @@
       "id": "tourTable",
       "type": "table",
       "servervarSingleRow": "selectedtour",
+       "data":"tablequeryname",
       "tableOptions": {
         "showfilterrow": true,
         "showExport": true,
@@ -59,11 +60,22 @@
         }
       },
       "readonly": false
+    },
+    {
+      "id": "name",
+      "type": "input",
+      "readonly": false,
+        "value":"namevalue"
+    },
+    {
+      "id": "code",
+      "type": "input",
+      "readonly": true,
+        "value":"codevalue"
     }
   ],
   "isserveraction": true,
   "type": "dialog",
-  "fullname": "timeslotman/basedata/allTours",
   "header": {
     "id": "allToursHeader",
     "title": "#AllPlannedTours",

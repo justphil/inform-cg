@@ -1,4 +1,4 @@
-angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, $q, dialogLoadingService, dialogCreationService, i18nService,dialogFragmentLoader) {
+angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, $q, dialogLoadingService, dialogCreationService, i18nService,dialogFragmentLoader,dialogMarkupBuilder) {
   console.log('### ### StaticCtrl initialized!');
 
   $scope.dialog = {
@@ -16,7 +16,9 @@ angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, $
       fragments: responses[0],
       description: responses[1].data
     }
-  }).then(dialogCreationService.createDialog).catch(function(error) {
+  }).then(dialogMarkupBuilder.buildMarkup).then(function(markupString){
+      console.log(markupString);
+  }).catch(function(error) {
     console.log('Error', error);
   });
 
