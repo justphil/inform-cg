@@ -92,7 +92,13 @@ angular.module('informCgApp').factory('dialogMarkupBuilder', function () {
 
         elementMarkup = elementMarkup.replace(srv.placeholders.WIDTH,element.width);
         elementMarkup = elementMarkup.replace(srv.placeholders.VALUE,element.value);
-        elementMarkup = elementMarkup.replace(srv.placeholders.DATA, element.data);
+        if (element.type && element.type == "table") {
+          if (element.queryinfo && element.queryinfo.query) {
+            elementMarkup = elementMarkup.replace(srv.placeholders.DATA, "dialogValues.query." + element.queryinfo.query);
+          } else {
+            //TODO: log error
+          }
+        }
 
         // error markup
 
