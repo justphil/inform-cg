@@ -6,14 +6,9 @@ angular.module('informCgApp').factory('dialogFragmentLoader', function($http, $q
     srv.fragments = {};
 
     srv.fragmentDefinitions = {
-      baseContainer:          'views/engine/BaseContainer.html',
-      input:                  'views/engine/Input.html',
-      output:                 'views/engine/Output.html',
-      outputBindToTemplate:   'views/engine/OutputBindToTemplate.html',
-      textarea:               'views/engine/Textarea.html',
-      radio:                  'views/engine/Radio.html',
-      error:                  'views/engine/Error.html',
-      errorContainer:         'views/engine/ErrorContainer.html'
+      cgDialogFragment:          'templates/fragments/cgDialogFragment.html',
+      cgInputFragment:          'templates/fragments/cgInputFragment.html',
+      cgTableFragment:          'templates/fragments/cgTableFragment.html'
     };
 
     srv.loadFragment = function(fragmentKey) {

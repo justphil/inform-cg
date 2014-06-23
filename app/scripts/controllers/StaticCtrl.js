@@ -1,4 +1,4 @@
-angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, dialogLoadingService, dialogCreationService, i18nService) {
+angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, dialogLoadingService, dialogCreationService, i18nService,dialogFragmentLoader) {
   console.log('### ### StaticCtrl initialized!');
 
   $scope.dialog = {
@@ -9,7 +9,7 @@ angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, d
   dialogLoadingService.loadDialog('tourOverviewFromServer.json').then(function(response) {
     console.log('Dialog loaded', response.data);
     return response.data;
-  }).then(dialogCreationService.createDialog).catch(function(error) {
+  }).then(dialogFragmentLoader.loadFragments).then(dialogCreationService.createDialog).catch(function(error) {
     console.log('Error', error);
   });
 
