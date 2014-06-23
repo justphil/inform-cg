@@ -1,6 +1,4 @@
-angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, $q, dialogLoadingService, dialogCreationService, i18nService,dialogFragmentLoader,dialogMarkupBuilder) {
-  console.log('### ### StaticCtrl initialized!');
-
+angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, $q, dialogLoadingService, dialogFragmentLoader, dialogMarkupBuilder) {
   $scope.dialog = {
     // queryStore
     // dialogValues (initial copy of queryStore)
