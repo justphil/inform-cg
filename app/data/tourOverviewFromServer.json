@@ -34,7 +34,8 @@
       }
     ],
     "readonly": false
-  }, "id": "allTours",
+  },
+  "id": "allTours",
   "controls": [
     {
       "id": "tourTable",
