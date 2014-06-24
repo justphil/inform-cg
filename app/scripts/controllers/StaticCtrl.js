@@ -1,4 +1,5 @@
-angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, $q, dialogLoadingService, dialogFragmentLoader, dialogMarkupBuilder) {
+angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, $q, dialogLoadingService, serversideActionsIndex, dialogFragmentLoader, dialogMarkupBuilder) {
+
   $scope.dialog = {
     // queryStore
     // dialogValues (initial copy of queryStore)
@@ -16,6 +17,8 @@ angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, $
     // TODO: need to copy values from first row of dataModel using query header information as keys
     $scope.dialog.dialogValues = responses[1].data.dialogValues;
 
+    serversideActionsIndex.createIndex(responses[1].data);
+
     return {
       fragments: responses[0],
       description: responses[1].data
@@ -26,6 +29,5 @@ angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, $
   }).catch(function(error) {
     console.log('Error', error);
   });
-
 
 });
