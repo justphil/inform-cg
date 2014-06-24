@@ -23,7 +23,8 @@ angular.module('informCgApp').factory('dialogMarkupBuilder', function () {
         DATA: '%DATA%',
         HEADER: '%HEADER%',
         CONTROLS: '%CONTROLS%',
-        FOOTER: '%FOOTER%'
+        FOOTER: '%FOOTER%',
+        MULTISELECT : '%MULTISELECT%'
     };
 
     srv.in = function (needle, haystack) {
@@ -141,30 +142,26 @@ srv.createFooter = function (footer, fragments, dialogId) {
 
     // reference to scope variable for "query data"
     if (element.type) {
-    var queryValueReference = 'dataModel' + '.';
-    if (element.type == "table") {
-    if (element.queryinfo && element.queryinfo.query) {
-    elementMarkup = elementMarkup.replace(srv.placeholders.DATA, queryValueReference + element.queryinfo.query);
-    } else {
-    //TODO: log error
-    }
-    }
-    if(element.type === 'select2'){
-    if (element.list && element.list.query) {
-    elementMarkup = elementMarkup.replace(srv.placeholders.DATA, element.list.query);
-    } else {
-    //TODO: log error
-    }
-    }
-    }
-
-    if (element.type && element.type == "table") {
-        var queryValueReference = 'dataModel' + '.';
+      var queryValueReference = 'dataModel' + '.';
+      if (element.type == "table") {
         if (element.queryinfo && element.queryinfo.query) {
-            elementMarkup = elementMarkup.replace(srv.placeholders.DATA, queryValueReference + element.queryinfo.query);
+          elementMarkup = elementMarkup.replace(srv.placeholders.DATA, queryValueReference + element.queryinfo.query);
         } else {
-            //TODO: log error
+         //TODO: log error
         }
+      }
+      if(element.type === 'select2'){
+        if (element.list && element.list.query) {
+          elementMarkup = elementMarkup.replace(srv.placeholders.DATA, element.list.query);
+        } else {
+          //TODO: log error
+        }
+        if(element.multiselect) {
+          elementMarkup = elementMarkup.replace(srv.placeholders.MULTISELECT, true);
+        } else {
+          elementMarkup = elementMarkup.replace(srv.placeholders.MULTISELECT, "");
+        }
+      }
     }
 
     // add childs

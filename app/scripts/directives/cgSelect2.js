@@ -16,12 +16,18 @@ angular.module('informCgApp').directive('cgSelect2', function () {
 
       $('#' + scope.id).select2({
         data : select2Data,
-        dropdownAutoWidth : true
+        dropdownAutoWidth : true,
+        multiple: scope.multiSelect
+      }).on('change', function (e) {
+        scope.$apply(function(){
+          scope.value = e.val;
+        });
       });
     },
     scope : {
       id : '@',
       value : '=',
+      multiSelect: '@',
       data : '@',
       dialog : '='
     }
