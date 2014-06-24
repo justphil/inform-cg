@@ -24,7 +24,8 @@ angular.module('informCgApp').factory('dialogMarkupBuilder', function () {
         HEADER: '%HEADER%',
         CONTROLS: '%CONTROLS%',
         FOOTER: '%FOOTER%',
-        MULTISELECT : '%MULTISELECT%'
+        MULTISELECT : '%MULTISELECT%',
+        SERVER_ACTION_TRIGGER: '%SERVER_ACTION_TRIGGER%'
     };
 
     srv.in = function (needle, haystack) {
@@ -165,6 +166,15 @@ srv.createFooter = function (footer, fragments, dialogId) {
           elementMarkup = elementMarkup.replace(srv.placeholders.MULTISELECT, "");
         }
       }
+
+      var serverActionTrigger = '';
+      if (element.type === 'button') {
+        if (element.hasOwnProperty('onclick') && element.onclick.action.isServerAction) {
+          serverActionTrigger += 'ng-click="dialog.serverActions.triggerServerAction(\'abc\')"';
+        }
+      }
+
+      elementMarkup = elementMarkup.replace(srv.placeholders.SERVER_ACTION_TRIGGER, serverActionTrigger);
     }
 
     // add childs
