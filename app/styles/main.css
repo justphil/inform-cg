@@ -2,6 +2,20 @@
   display: none;
 }
 
+.layout-element {
+    border: 5px solid red;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.layout-element.sidebar {
+    width: 28%;
+}
+
+.layout-element.content {
+    width: 68%;
+}
+
 th {
     cursor: pointer;
 }

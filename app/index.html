@@ -3,9 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>informCgApp</title>
-
-
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="lib/select2/select2.css">
     <link rel="Stylesheet" type="text/css" href="lib/jqwidgets-ver3.2.1-src/styles/jqx.base.css" />
     <link rel="Stylesheet" type="text/css" href="lib/jqwidgets-ver3.2.1-src/styles/jqx.arctic.css" />
     <link rel="Stylesheet" type="text/css" href="lib/jqwidgets-ver3.2.1-src/styles/jqx.darkblue.css" />
@@ -17,16 +16,27 @@
 
 
 </head>
-<body>
+<body ng-controller="MainCtrl">
 
     <h1>informCgApp</h1>
+    <p>
+        Main Menu:
+        <span ng-repeat="menuItem in menu">
+            <a ng-href="#/{{ menuItem.title }}/{{ menuItem.default }}">{{ menuItem.title }}</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+    </p>
 
-    <div ui-view></div>
+
+    <div class="static" ui-view="static"></div>
+    <div class="layout-element sidebar" ui-view="sidebar"></div>
+    <div class="layout-element content" ui-view="content"></div>
 
     <!-- 3rd-Party Libs -->
     <script src="lib/jquery/jquery-1.11.0.min.js"></script>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-ui-router/angular-ui-router.js"></script>
+    <script src="lib/select2/select2.js"></script>
 
 
     <script type="text/javascript" src="lib/jqwidgets-ver3.2.1-src/jqxcore.js"></script>
@@ -41,16 +51,22 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/StaticCtrl.js"></script>
     <script src="scripts/controllers/AnotherCtrl.js"></script>
+    <script src="scripts/controllers/MainCtrl.js"></script>
+    <script src="scripts/controllers/SidebarCtrl.js"></script>
+    <script src="scripts/controllers/ContentCtrl.js"></script>
     <script src="scripts/services/i18nService.js"></script>
     <script src="scripts/services/dialogLoadingService.js"></script>
     <script src="scripts/services/dialogCreationService.js"></script>
     <script src="scripts/services/dialogFragmentLoader.js"></script>
     <script src="scripts/services/dialogMarkupBuilder.js"></script>
+    <script src="scripts/services/menuLoader.js"></script>
     <script src="scripts/services/jqxLink.js"></script>
     <script src="scripts/directives/cgDialog.js"></script>
     <script src="scripts/directives/cgInput.js"></script>
     <script src="scripts/directives/cgTable.js"></script>
     <script src="scripts/directives/cgDialogRenderer.js"></script>
+    <script src="scripts/directives/cgSelect2.js"></script>
+    <script src="scripts/directives/cgButton.js"></script>
     <script src="scripts/directives/ngJqxSettings.js"></script>
     <script src="scripts/filters/i18n.js"></script>
     <script src="scripts/_configs/routeConfig.js"></script>
