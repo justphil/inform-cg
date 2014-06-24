@@ -3,17 +3,21 @@
 <head>
     <meta charset="utf-8">
     <title>informCgApp</title>
-
-
     <link rel="stylesheet" href="styles/main.css">
-
-
 </head>
-<body>
+<body ng-controller="MainCtrl">
 
     <h1>informCgApp</h1>
+    <p>
+        Main Menu:
+        <span ng-repeat="menuItem in menu">
+            <a ng-href="#/{{ menuItem.title }}/{{ menuItem.default }}">{{ menuItem.title }}</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+    </p>
 
-    <div ui-view></div>
+    <div class="layout-element sidebar" ui-view="sidebar"></div>
+    <div class="layout-element content" ui-view="content"></div>
 
     <!-- 3rd-Party Libs -->
     <script src="lib/jquery/jquery-1.11.0.min.js"></script>
@@ -24,11 +28,15 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/StaticCtrl.js"></script>
     <script src="scripts/controllers/AnotherCtrl.js"></script>
+    <script src="scripts/controllers/MainCtrl.js"></script>
+    <script src="scripts/controllers/SidebarCtrl.js"></script>
+    <script src="scripts/controllers/ContentCtrl.js"></script>
     <script src="scripts/services/i18nService.js"></script>
     <script src="scripts/services/dialogLoadingService.js"></script>
     <script src="scripts/services/dialogCreationService.js"></script>
     <script src="scripts/services/dialogFragmentLoader.js"></script>
     <script src="scripts/services/dialogMarkupBuilder.js"></script>
+    <script src="scripts/services/menuLoader.js"></script>
     <script src="scripts/directives/cgDialog.js"></script>
     <script src="scripts/directives/cgInput.js"></script>
     <script src="scripts/directives/cgTable.js"></script>
