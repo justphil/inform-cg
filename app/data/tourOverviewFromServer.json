@@ -41,7 +41,7 @@
       "id": "tourTable",
       "type": "table",
       "servervarSingleRow": "selectedtour",
-       "data":"tablequeryname",
+      "data": "tablequeryname",
       "tableOptions": {
         "showfilterrow": true,
         "showExport": true,
@@ -65,13 +65,22 @@
       "id": "name",
       "type": "input",
       "readonly": false,
-        "value":"namevalue"
+      "value": "namevalue"
     },
     {
       "id": "code",
       "type": "input",
       "readonly": true,
-        "value":"codevalue"
+      "value": "codevalue"
+    },
+    {
+      "id": "select2",
+      "type": "select2",
+      "list": {
+        "query": "tour__overview",
+        "valueCol": 0,
+        "displayCol": [1]
+      }
     }
   ],
   "isserveraction": true,
@@ -89,7 +98,7 @@
       }
     ],
     "alltours.name": "Tobias",
-    "alltours.code":"1234"
+    "alltours.code": "1234"
   },
   "dataModel": {
     "tour__overview": {
