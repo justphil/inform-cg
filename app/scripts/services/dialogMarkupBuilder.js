@@ -84,6 +84,9 @@ angular.module('informCgApp').factory('dialogMarkupBuilder', function () {
             else if (element.type === 'table') {
                 fragmentType = fragments.cgTableFragment;
             }
+            else if (element.type === 'jqxinput') {
+                fragmentType = fragments.cgJqxinputTemplate;
+            }
             else if (element.type === 'radio') {
                 fragmentType = fragments.radio;
             }

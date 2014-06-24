@@ -69,7 +69,7 @@
     },
     {
       "id": "code",
-      "type": "input",
+      "type": "jqxinput",
       "readonly": true,
       "value": "codevalue"
     },
