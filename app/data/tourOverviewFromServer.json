@@ -81,6 +81,16 @@
         "valueCol": 0,
         "displayCol": [1]
       }
+    },
+    {
+      "id": "select2Multi",
+      "type": "select2",
+      "multiselect": true,
+      "list": {
+        "query": "tour__overview",
+        "valueCol": 0,
+        "displayCol": [1]
+      }
     }
   ],
   "isserveraction": true,
