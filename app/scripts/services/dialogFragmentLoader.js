@@ -8,7 +8,8 @@ angular.module('informCgApp').factory('dialogFragmentLoader', function($http, $q
     srv.fragmentDefinitions = {
       cgDialogFragment:          'templates/fragments/cgDialogFragment.html',
       cgInputFragment:          'templates/fragments/cgInputFragment.html',
-      cgTableFragment:          'templates/fragments/cgTableFragment.html'
+      cgTableFragment:          'templates/fragments/cgTableFragment.html',
+      cgSelect2Fragment:          'templates/fragments/cgSelect2Fragment.html'
     };
 
     srv.loadFragment = function(fragmentKey) {

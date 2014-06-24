@@ -79,6 +79,8 @@ angular.module('informCgApp').factory('dialogMarkupBuilder', function () {
         else {
           fragmentType = fragments.output;
         }
+      } else if (element.type === 'select2'){
+        fragmentType = fragments.cgSelect2Fragment;
       }
       else {
         throw new Error('Unknown form element type: ' + element.type);
@@ -111,7 +113,7 @@ angular.module('informCgApp').factory('dialogMarkupBuilder', function () {
     elementMarkup = elementMarkup.replace(srv.placeholders.WIDTH, element.width);
 
     // reference to scope variable for "dialogValue"
-    var dialogValueReference = 'dialogValues'; // TODO: define constants
+    var dialogValueReference = 'dialog.dialogValues'; // TODO: define constants
     var elementId = '';
     if (dialogId) {
       elementId += dialogId + '.';
@@ -121,15 +123,23 @@ angular.module('informCgApp').factory('dialogMarkupBuilder', function () {
     elementMarkup = elementMarkup.replace(srv.placeholders.VALUE,dialogValueReference);
 
     // reference to scope variable for "query data"
-    if (element.type && element.type == "table") {
-      var queryValueReference = 'dataModel'+'.';
-      if (element.queryinfo && element.queryinfo.query) {
-        elementMarkup = elementMarkup.replace(srv.placeholders.DATA, queryValueReference + element.queryinfo.query);
-      } else {
-        //TODO: log error
+    if (element.type) {
+      var queryValueReference = 'dataModel' + '.';
+      if (element.type == "table") {
+        if (element.queryinfo && element.queryinfo.query) {
+          elementMarkup = elementMarkup.replace(srv.placeholders.DATA, queryValueReference + element.queryinfo.query);
+        } else {
+          //TODO: log error
+        }
+      }
+      if(element.type === 'select2'){
+        if (element.list && element.list.query) {
+          elementMarkup = elementMarkup.replace(srv.placeholders.DATA, element.list.query);
+        } else {
+          //TODO: log error
+        }
       }
     }
-
     // error markup
 
     return elementMarkup;
