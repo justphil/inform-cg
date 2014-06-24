@@ -6,7 +6,7 @@ angular.module('informCgApp').directive('cgJqxinput', function() {
 
     return {
         restrict: 'E',
-        templateUrl: '../../templates/directives/cgJqxinputTemplate.html',
+        templateUrl: 'templates/directives/cgJqxinputTemplate.html',
         link:function(scope){
 
             console.log('cgJqxInput link function');
