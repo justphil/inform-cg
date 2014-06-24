@@ -19,6 +19,7 @@ angular.module('informCgApp').factory('dialogMarkupBuilder', function () {
         SHOW_CONDITION: '%SHOW_CONDITION%',
         ISSERVERACTION: '%ISSERVERACTION%',
         VALUE: '%VALUE%',
+        LABEL: '%LABEL%',
         DATA: '%DATA%',
         HEADER: '%HEADER%',
         CONTROLS: '%CONTROLS%',
@@ -94,6 +95,8 @@ angular.module('informCgApp').factory('dialogMarkupBuilder', function () {
                 }
             } else if (element.type === 'select2'){
               fragmentType = fragments.cgSelect2Fragment;
+            } else if (element.type === 'button'){
+                fragmentType = fragments.cgButtonFragment;
             } else {
                 throw new Error('Unknown form element type: ' + element.type);
             }
@@ -123,6 +126,8 @@ srv.createFooter = function (footer, fragments, dialogId) {
     elementMarkup = srv.replaceAll(srv.placeholders.ID, element.id, elementMarkup);
 
     elementMarkup = elementMarkup.replace(srv.placeholders.WIDTH, element.width);
+
+    elementMarkup = elementMarkup.replace(srv.placeholders.LABEL, element.label);
 
     // reference to scope variable for "dialogValue"
     var dialogValueReference = 'dialog.dialogValues'; // TODO: define constants

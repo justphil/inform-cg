@@ -5,7 +5,7 @@
       {
         "id": "showTourDetails",
         "label": "#showTourDetails",
-        "type": "input",
+        "type": "button",
         "onclick": {
           "action": {
             "isServerAction": true,
@@ -20,7 +20,7 @@
       {
         "id": "btnTourDelete",
         "label": "#deleteTour",
-        "type": "input",
+        "type": "button",
         "onclick": {
           "action": {
             "isServerAction": true,
