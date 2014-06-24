@@ -7,7 +7,8 @@ angular.module('informCgApp').directive('cgButton', function() {
       console.log('cgButton instance created');
     },
     scope:{
-        label:'@'
+        label:'@',
+        dialog: '='
     }
   }
 });

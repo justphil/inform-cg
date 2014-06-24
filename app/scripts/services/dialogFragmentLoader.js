@@ -11,6 +11,7 @@ angular.module('informCgApp').factory('dialogFragmentLoader', function($http, $q
       cgTableFragment:          'templates/fragments/cgTableFragment.html',
       cgFooterFragment:         'templates/fragments/cgFooterFragment.html',
       cgSelect2Fragment:        'templates/fragments/cgSelect2Fragment.html',
+      cgJqxinputTemplate:        'templates/fragments/cgJqxinputFragment.html',
       cgButtonFragment:         'templates/fragments/cgButtonFragment.html'
     };
 

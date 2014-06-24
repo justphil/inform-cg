@@ -19,6 +19,14 @@ angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, $
 
     serversideActionsIndex.createIndex(responses[1].data);
 
+    $scope.dialog.description = responses[1].data;
+
+    $scope.dialog.serverActions = {
+      triggerServerAction: function(id, action) {
+        console.log('[triggerServerAction]', serversideActionsIndex.getServersideAction(id, action));
+      }
+    };
+
     return {
       fragments: responses[0],
       description: responses[1].data

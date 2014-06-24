@@ -21,10 +21,10 @@ angular.module('informCgApp').factory('serversideActionsIndex', function($http) 
     }
 
   function createIndex(dialogData) {
-
-        extractActions(dialogData.id, dialogData.header, actionStore);
-        extractActions(dialogData.id, dialogData.controls, actionStore);
-        extractActions(dialogData.id, dialogData.footer, actionStore);
+        var dialogId = dialogData.id.toLowerCase();
+        extractActions(dialogId, dialogData.header, actionStore);
+        extractActions(dialogId, dialogData.controls, actionStore);
+        extractActions(dialogId, dialogData.footer, actionStore);
         console.log('[StaticCtrl.ActionStore]', actionStore);
   }
 
