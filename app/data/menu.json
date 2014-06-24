@@ -1,0 +1,17 @@
+[
+  {
+    "title": "one",
+    "children": ["one.a", "one.b", "one.c"],
+    "default": "one.a"
+  },
+  {
+    "title": "two",
+    "children": ["two.a", "two.b", "two.c"],
+    "default": "two.a"
+  },
+  {
+    "title": "three",
+    "children": ["three.a", "three.b", "three.c"],
+    "default": "three.a"
+  }
+]

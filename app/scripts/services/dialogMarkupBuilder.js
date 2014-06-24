@@ -92,8 +92,9 @@ angular.module('informCgApp').factory('dialogMarkupBuilder', function () {
                 else {
                     fragmentType = fragments.output;
                 }
-            }
-            else {
+            } else if (element.type === 'select2'){
+              fragmentType = fragments.cgSelect2Fragment;
+            } else {
                 throw new Error('Unknown form element type: ' + element.type);
             }
 
@@ -107,14 +108,14 @@ srv.createFooter = function (footer, fragments, dialogId) {
     return srv.buildMarkupForElement(fragments, footer, fragments.cgFooterFragment, dialogId);
 };
 
-/**
- * builds markup (angularJS directives) for a single element of the dialog description
- * @param element  this element of the dialog description will be translated into a angularJS directive
- * @param fragment  this fragment contains the directive to translate to (including placeholders)
- * @param dialogId  ID of the dialog that contains this element
- * @returns {XML|string|void|*}  angularJS directive. All placeholders have been replaced.
- */
-srv.buildMarkupForElement = function (fragments, element, fragment, dialogId) {
+  /**
+   * builds markup (angularJS directives) for a single element of the dialog description
+   * @param element  this element of the dialog description will be translated into a angularJS directive
+   * @param fragment  this fragment contains the directive to translate to (including placeholders)
+   * @param dialogId  ID of the dialog that contains this element
+   * @returns {XML|string|void|*}  angularJS directive. All placeholders have been replaced.
+   */
+  srv.buildMarkupForElement = function (fragments, element, fragment, dialogId) {
 
     // element markup
     var elementMarkup = fragment.replace(srv.placeholders.TYPE, element.type);
@@ -124,7 +125,7 @@ srv.buildMarkupForElement = function (fragments, element, fragment, dialogId) {
     elementMarkup = elementMarkup.replace(srv.placeholders.WIDTH, element.width);
 
     // reference to scope variable for "dialogValue"
-    var dialogValueReference = 'dialogValues'; // TODO: define constants
+    var dialogValueReference = 'dialog.dialogValues'; // TODO: define constants
     var elementId = '';
     if (dialogId) {
         elementId += dialogId + '.';
@@ -134,6 +135,24 @@ srv.buildMarkupForElement = function (fragments, element, fragment, dialogId) {
     elementMarkup = elementMarkup.replace(srv.placeholders.VALUE, dialogValueReference);
 
     // reference to scope variable for "query data"
+    if (element.type) {
+    var queryValueReference = 'dataModel' + '.';
+    if (element.type == "table") {
+    if (element.queryinfo && element.queryinfo.query) {
+    elementMarkup = elementMarkup.replace(srv.placeholders.DATA, queryValueReference + element.queryinfo.query);
+    } else {
+    //TODO: log error
+    }
+    }
+    if(element.type === 'select2'){
+    if (element.list && element.list.query) {
+    elementMarkup = elementMarkup.replace(srv.placeholders.DATA, element.list.query);
+    } else {
+    //TODO: log error
+    }
+    }
+    }
+
     if (element.type && element.type == "table") {
         var queryValueReference = 'dataModel' + '.';
         if (element.queryinfo && element.queryinfo.query) {
