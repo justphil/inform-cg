@@ -1,11 +1,11 @@
 {
   "footer": {
-    "id": "allToursHeader",
+    "id": "allToursFooter",
     "controls": [
       {
         "id": "showTourDetails",
         "label": "#showTourDetails",
-        "type": "button",
+        "type": "input",
         "onclick": {
           "action": {
             "isServerAction": true,
@@ -20,7 +20,7 @@
       {
         "id": "btnTourDelete",
         "label": "#deleteTour",
-        "type": "button",
+        "type": "input",
         "onclick": {
           "action": {
             "isServerAction": true,
