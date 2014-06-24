@@ -16,6 +16,15 @@ angular.module('informCgApp').controller('StaticCtrl', function($scope, $http, $
     // TODO: need to copy values from first row of dataModel using query header information as keys
     $scope.dialog.dialogValues = responses[1].data.dialogValues;
 
+    $scope.dialog.description = responses[1].data;
+
+    $scope.dialog.serverActions = {
+      triggerServerAction: function(a) {
+        var tmp = $scope.dialog.description.footer.controls[0].onclick.action.dialog;
+        console.log('[triggerServerAction]', a, tmp);
+      }
+    };
+
     return {
       fragments: responses[0],
       description: responses[1].data
